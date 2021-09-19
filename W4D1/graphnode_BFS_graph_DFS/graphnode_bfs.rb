@@ -23,7 +23,7 @@ def bfs(starting_node, target_value, visited = Set.new())
     ele = my_queue.shift
     visited.add(ele.val)
     return ele if ele.val == target_value
-    ele.neighbors.each {|neighbor| my_queue << neighbor if visited.include?(neighbor.val)}
+    ele.neighbors.each {|neighbor| my_queue << neighbor if !visited.include?(neighbor.val)}
   end
 
   nil
