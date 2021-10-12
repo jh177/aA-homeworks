@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      render :new
-    else
-      render :new
-    end
+    user = User.create(user_params)
+
+    msg = UserMailer.welcome_email(user)
+    msg.deliver_now
+
+    render :root
+
   end
 
   def new
